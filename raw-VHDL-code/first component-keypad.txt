@@ -1,0 +1,33 @@
+--component of user keypad
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+
+entity keypadentry is
+port ( key: in std_logic_vector(2 downto 0);
+keyout: out std_logic_vector(2 downto 0));
+end;
+
+
+architecture beh of keypadentry is
+
+--if a key entered it will send a signal to the central machine, this has to be done with switches and buttons
+
+
+begin
+process(key)
+begin
+case key is
+
+when"001"=>keyout<="001";
+when"010"=>keyout<="010";
+when"011"=>keyout<="011";
+when"100"=>keyout<="100";
+when"101"=>keyout<="101";
+when others=>keyout<=null;
+end case;
+end process;
+
+end;

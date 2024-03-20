@@ -1,4 +1,10 @@
 # Projects
-Personal projects and examples of work.
+Welcome to my github repo
 
-Mainly FPGA related work
+Current Directory
+- Assignments
+ - broken into PDF and Word docs sections for viewing
+- Lab materials
+- raw VHDL code showing progression
+- VHDL-Projects 
+

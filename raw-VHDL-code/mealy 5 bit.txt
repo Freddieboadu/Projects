@@ -1,0 +1,73 @@
+
+--5 bit sequence of 10011
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+ 
+entity mealy5bit is
+Port ( clk : in STD_LOGIC;
+input : in STD_LOGIC;
+reset : in STD_LOGIC;
+output : out STD_LOGIC);
+end mealy5bit;
+ 
+architecture Behavioral of mealy5bit is
+type state is (s0, s1, s2, s3,s4);
+signal ps, ns: state;
+begin
+ 
+syncronous_process : process (clk)
+begin
+if rising_edge(clk) then
+if (reset = '1') then
+ps <= s0;
+else
+ps <= ns;
+end if;
+end if;
+end process;
+ 
+next_state_and_output_decoder : process(ps, input)
+begin
+output <= '0'; case (ps) is 
+when s0 =>
+if (input = '1') then
+ns <= s1;
+output <= '0';
+else
+ns <= s0;
+output <= '0'; end if; 
+when S1 =>
+if (input = '1') then
+ns <= s1;
+output <= '0';
+else
+ns <= s1;
+output <= '0'; end if; 
+when S2 =>
+if (input = '1') then
+ns <= s1;
+output <= '0';
+else
+ns<= s2;
+output <= '0'; end if; 
+when S3 =>
+if (input = '1') then
+ns <= s1;
+output <= '0';
+else
+ns<= s0;
+output <= '0'; end if; 
+when s4 =>
+if (input = '1') then
+ns <=s1;
+output<='1';
+else 
+ns <= s0;
+output <='0'; end if;
+when others =>
+ns <= s0;
+output <= '0';
+end case;
+end process;
+ 
+end Behavioral;
